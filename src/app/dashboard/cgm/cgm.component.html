@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pt-4">
+            <form action="add" method="POST" role="form">
+                <!-- Title section -->
+                <legend>Cabinet Core Material</legend>
+                <div>
+                    <div class="text-right add-btn">
+                        <button type="button" class="btn btn-primary" (click)="open(content)">Add CCM</button>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Layout</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cgm of cgm_data; index as i">
+                                <th scope="row">{{ i + 1 }}</th>
+                                <td>
+                                    {{ cgm.ccmName }}
+                                </td>
+                                <td style="white-space: nowrap">
+                                    <button type="button" class="btn btn-sm btn-danger btn-delete-user"
+                                        (click)="editdata(editContent, cgm)">Edit</button>
+                                    <button class="btn btn-sm btn-danger btn-delete-user" (click)="delete(cgm)">
+                                        Delete
+                                    </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="modal-header">
+            <h4 class="modal-title">Add CCM</h4>
+            <button type="button" id="auto_trigger" class="btn-close btn-close-white" aria-label="Close"
+                (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control w-100" formControlName="ccmName" name="name"
+                    placeholder="Name">
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #editContent let-modal>
+    <form [formGroup]="formEdit" (ngSubmit)="editsubmit()">
+        <div class="modal-header">
+            <h4 class="modal-title">Edit CCM</h4>
+            <button type="button" id="auto_trigger" class="btn-close btn-close-white" aria-label="Close"
+                (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group">
+                <label>ID</label>
+                <input type="text" class="form-control w-100" formControlName="id" [readonly] = "disableSelect"name="id" placeholder="id">
+            </div>
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control w-100" formControlName="ccmName" name="name"
+                    placeholder="Name">
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">submit</button>
+        </div>
+    </form>
+</ng-template>

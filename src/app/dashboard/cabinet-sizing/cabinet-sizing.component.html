@@ -1,0 +1,146 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pt-4">
+            <legend>Cabinet Sizing</legend>
+            <div class="text-right add-btn">
+                       
+                        <button type="button" class="btn btn-primary" (click)="open(content)">Add Cabinet Sizing</button>
+                    </div> 
+            <div class="d-flex flex-row">
+                  <div *ngFor="let cgm of cgm_data" class="p-3" >
+                    <label for="cgm_name_{{cgm.ccmName}}">
+                      <input id="cgm_name_{{cgm.ccmName}}" [value]='cgm.ccmName' type="radio" name="ccmname" [(ngModel)]="radioSelected" (change)="updateOnclickGen($event, radioSelected)">
+                      {{cgm.ccmName}}
+                    </label>
+                  </div>
+            </div>
+            <form action="add" method="POST" role="form" [formGroup]="form">
+                <!-- Title section -->
+               
+                <div>
+                    <!-- <div class="text-right add-btn">
+                       
+                        <button type="button" class="btn btn-primary" (click)="open(content)">Add CGM</button>
+                    </div> -->
+                    
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Base Category price</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">SQFT</th>
+                                <th scope="col">Type Size</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cab_size of size_data; index as i">
+                                <th scope="row">{{ i + 1 }}</th>
+                                <td>
+                                    {{ cab_size.baseCategory }}
+                                </td>
+                                <td>
+                                    {{ cab_size.price}}
+                                </td>
+                                <td>
+                                    {{ cab_size.sqft}}
+                                </td>
+                                <td>
+                                    {{ cab_size.typeSize}}
+                                </td>
+                                <td style="white-space: nowrap">
+                                    <button type="button" class="btn btn-sm btn-danger btn-delete-user"
+                                        (click)="editdata(editContent, cab_size)">Edit</button>
+                                    <button class="btn btn-sm btn-danger btn-delete-user" (click)="delete(cab_size)">
+                                        Delete
+                                    </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="modal-header">
+            <h4 class="modal-title">Add Cabinet Sizing</h4>
+            <button type="button" id="auto_trigger" class="btn-close btn-close-white" aria-label="Close"
+                (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group">
+                <label>Base Category Name</label>
+                <input type="text" class="form-control w-100" formControlName="baseCategory" name="baseCategory"
+                    placeholder="baseCategory">
+            </div>
+            <div class="form-group">
+                <label>Type Size</label>
+                <input type="text" class="form-control w-100" formControlName="typeSize" name="typeSize"
+                    placeholder="typeSize">
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input type="text" class="form-control w-100" formControlName="price" name="price"
+                    placeholder="price">
+            </div>
+            <div class="form-group">
+                <label>SQFT</label>
+                <input type="text" class="form-control w-100" formControlName="sqft" name="sqft"
+                    placeholder="sqft">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #editContent let-modal>
+    <form [formGroup]="formEdit" (ngSubmit)="editsubmit()">
+        <div class="modal-header">
+            <h4 class="modal-title">Edit Cabinet Sizing</h4>
+            <button type="button" id="auto_trigger" class="btn-close btn-close-white" aria-label="Close"
+                (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group">
+                <label>ID</label>
+                <input type="text" class="form-control w-100" formControlName="id" [readonly]="disableSelect" name="id" placeholder="id">
+            </div>
+
+            <div class="form-group">
+                <label>Base Category Name</label>
+                <input type="text" class="form-control w-100" formControlName="baseCategory" name="baseCategory"
+                    placeholder="baseCategory">
+            </div>
+            <div class="form-group">
+                <label>Type Size</label>
+                <input type="text" class="form-control w-100" formControlName="typeSize" name="typeSize"
+                    placeholder="typeSize">
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input type="text" class="form-control w-100" formControlName="price" name="price"
+                    placeholder="price">
+            </div>
+            <div class="form-group">
+                <label>SQFT</label>
+                <input type="text" class="form-control w-100" formControlName="sqft" name="sqft"
+                    placeholder="sqft">
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">submit</button>
+        </div>
+    </form>
+</ng-template>

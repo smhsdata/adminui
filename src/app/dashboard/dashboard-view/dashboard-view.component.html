@@ -1,0 +1,59 @@
+<div class="dashboard-content container-fluid">
+    <!-- Title section -->
+    <div class="row pt-4 no-gutters">
+        <div class="col-md-12"><h1>Dashboard</h1></div>
+    </div>
+    
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            
+            <form action="add" method="POST" role="form">
+                <legend>Admin Entry</legend>
+                <div class="form-group p-2">
+                    <label for="">Categories</label>
+                    <select class="form-select form-select-lg" >
+                        <option value="" >Choose a Category</option>
+                        <option *ngFor="let data of datas" >{{ data.base }}</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary m-3">Add</button>
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Layout</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Action</th>
+                         
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let lays of layout; index as i">
+                          <th scope="row">{{ i + 1 }}</th>
+                          <td>
+                            {{ lays.name }}
+                          </td>
+                          <td>
+                            {{ lays.price}}
+                          </td>
+                          <td style="white-space: nowrap">
+                            <a routerLink="" class="btn btn-sm btn-primary mr-1">Edit</a>
+                            <button  class="btn btn-sm btn-danger btn-delete-user" > 
+                                <span >Delete</span>
+                            </button>
+                        </td>
+                          
+                        </tr>
+                        </tbody>
+                      </table>
+                </div>
+                
+            </form>
+            
+        </div>
+    </div>
+</div>

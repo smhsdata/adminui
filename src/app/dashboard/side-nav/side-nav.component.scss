@@ -1,0 +1,25 @@
+.sidebar{
+    background: #ffffff;
+    height:100vh;
+    padding: 0 7px;
+    opacity: .95;
+    .logo{
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            padding-top:30ox;
+        }
+    }
+    .navbar-nav .nav-link {
+        color: #000000;
+        font-size: 14px;
+        span{
+            padding-right: 5px;;
+            i{
+                color: #f56036;
+            }
+        }
+    }
+}

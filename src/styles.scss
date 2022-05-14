@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+.table{
+    color: #000000;
+}
+legend{
+    color:#0F344A !important;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.modal-header {
+    background-color: #0F344A;
+    color: #fff;
+    h4{
+        font-weight: 300;
+    }
+    .btn-close {
+        padding: 0.5rem 0.5rem;
+        margin: -0.5rem -0.5rem -0.5rem auto;
+        color: #fff;
+    }
+}
+.btn-primary {
+    background-color: #0F344A;
+    border: #0F344A;
+}
+.btn-sm .btn-danger {
+    background-color: #ED393F;
+    border: #ED393F;
+}
+.sidebar .navbar-nav .nav-link{
+    font-size: 16px;
+    font-weight: 400;
+}
+.btn-sm, .btn-group-sm > .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.2rem;
+    margin-right: 10px;
+}
+.btn-sm{
+    background-color: #0F344A;
+    border: #0F344A;
+}
+.add-btn{
+float: right;
+}

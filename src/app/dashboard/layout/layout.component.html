@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pt-4">
+            <form action="add" method="POST" role="form">
+                <!-- Title section -->
+                <legend>Layout</legend>
+                <div>
+                    <div class="text-right add-btn">
+                        <!-- <button type="submit" class="btn btn-primary m-3 ">Add</button> -->
+                        <button type="button" class="btn btn-primary" (click)="open(content)">Add Layout</button>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Layout</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let lays of layout; index as i">
+                                <th scope="row">{{ i + 1 }}</th>
+                                <td>
+                                    {{ lays.layoutName }}
+                                </td>
+                                <td style="white-space: nowrap">
+                                    <button type="button" class="btn btn-sm btn-danger btn-delete-user"
+                                        (click)="editdata(editContent, lays)">Edit</button>
+                                    <button class="btn btn-sm btn-danger btn-delete-user" (click)="delete(lays)">
+                                        Delete
+                                    </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="modal-header">
+            <h4 class="modal-title">Add Layout</h4>
+            <button type="button" id="auto_trigger" class="btn-close btn-close-white" aria-label="Close"
+                (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control w-100" formControlName="layoutName" name="name"
+                    placeholder="Name">
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #editContent let-modal>
+    <form [formGroup]="formEdit" (ngSubmit)="editsubmit()">
+        <div class="modal-header">
+            <h4 class="modal-title">Edit Layout</h4>
+            <button type="button" id="auto_trigger" class="btn-close btn-close-white" aria-label="Close"
+                (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group">
+                <label>ID</label>
+                <input type="text" class="form-control w-100" [readonly] = "disableSelect" formControlName="id" name="id" placeholder="id">
+            </div>
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control w-100" formControlName="layoutName" name="name"
+                    placeholder="Name">
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">submit</button>
+        </div>
+    </form>
+</ng-template>
